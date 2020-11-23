@@ -6,7 +6,7 @@ on:
 
   schedule:
 
-    - cron: '*/20 */1 * * *'
+    - cron: '12 * * * *'
 
   # watch:
 
