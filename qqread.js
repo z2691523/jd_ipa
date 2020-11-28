@@ -70,9 +70,9 @@ const cookiesArr = [
       mpversion: "0.29.4",
     }),
     qqreadtimeurlVal:
-      "httphs://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=1007&refer=-1&bid=26878703&readTime=5083&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A5083%2C%22pay_status%22%3A0%7D%7D%5D&sp=-1",
+      "https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=2016&refer=pages%2Fbook-category%2Findex&bid=33586297&readTime=6152&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A6152%2C%22pay_status%22%3A0%7D%7D%5D&sp=-1",
     qqreadtimeheaderVal: JSON.stringify({
-      ywsession: "wk22o2fmjrg48snrtou2as19gurpvb5c",
+      ywsession: "dxffdalgxxh1s1mzz9jnlfuoluh6whhx",
       Cookie:
         "ywguid=111;ywkey=ywemcbEW649f;platform=ios;channel=mqqmina;mpVersion=0.29.4;qq_ver=8.4.5;os_ver=iOS 13.2.3;mpos_ver=1.18.0;platform=ios;openid=DD52CCE8A2AD4B50CFA38C1106F33208",
       Connection: "keep-alive",
@@ -90,7 +90,7 @@ const cookiesArr = [
     qqreadheaderVal: JSON.stringify({
       ywsession: "tqmlejkp6je8ndm3eskf9cnliu0if1p0",
       Cookie:
-        "ywguid=111;ywkey=ywyv3tRPAfMQ;platform=ios;channel=mqqmina;mpVersion=0.29.4",
+        "ywguid=992425787;ywkey=ywyv3tRPAfMQ;platform=ios;channel=mqqmina;mpVersion=0.29.4",
       Connection: "keep-alive",
       "Content-Type": "application/json",
       Accept: "*/*",
@@ -102,7 +102,7 @@ const cookiesArr = [
       mpversion: "0.29.4",
     }),
     qqreadtimeurlVal:
-      "https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=1007&refer=-1&bid=713632&readTime=6692&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%223%22%3A%7B%22readTime%22%3A6692%2C%22pay_status%22%3A0%7D%7D%5D&sp=-1",
+      "https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=2016&refer=pages%2Fbook-category%2Findex&bid=33586297&readTime=6152&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A6152%2C%22pay_status%22%3A0%7D%7D%5D&sp=-1",
     qqreadtimeheaderVal: JSON.stringify({
       ywsession: "tqmlejkp6je8ndm3eskf9cnliu0if1p0",
       Cookie:
