@@ -24,7 +24,7 @@ let qqreadheaderVal, qqreadtimeurlVal, qqreadtimeheaderVal;
 const cookiesArr = [
   {
     qqreadheaderVal: JSON.stringify({
-      ywsession: "231ajtrxkxiqa4hxlf9tq6f0x51yq5le",
+      ywsession: "dxffdalgxxh1s1mzz9jnlfuoluh6whhx",
       Cookie:
         "ywguid=111;ywkey=ywRdaJX3UDkK;platform=ios;channel=mqqmina;mpVersion=0.28.0",
       Connection: "keep-alive",
@@ -38,9 +38,9 @@ const cookiesArr = [
       mpversion: "0.28.0",
     }),
     qqreadtimeurlVal:
-      "https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=3001&refer=pages%2Fbook-shelf%2Findex&bid=33543229&readTime=5197&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A5197%2C%22pay_status%22%3A0%7D%7D%5D&sp=%7B%22alg%22%3A%2290.2.1%22%2C%22expid%22%3A32%2C%22exposetime%22%3A%221606331345%22%2C%22logid%22%3A%22605412437109303030%22%2C%22origin%22%3A%220%22%2C%22preitemid%22%3A%22b_33543229%22%2C%22scene%22%3A%22tencent_selected_female%22%2C%22tabtype%22%3A%222%22%2C%22type%22%3A%220%22%2C%22userdegree%22%3A%222%22%7D",
+      "https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=2016&refer=pages%2Fbook-category%2Findex&bid=33586297&readTime=6152&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A6152%2C%22pay_status%22%3A0%7D%7D%5D&sp=-1",
     qqreadtimeheaderVal: JSON.stringify({
-      ywsession: "zzjvjyinsn2cp9l6s6vyor8yfba270qc",
+      ywsession: "dxffdalgxxh1s1mzz9jnlfuoluh6whhx",
       Cookie:
         "ywguid=111;ywkey=ywRdaJX3UDkK;platform=ios;channel=mqqmina;mpVersion=0.28.0;qq_ver=8.4.5;os_ver=iOS 13.2.3;mpos_ver=1.18.0;platform=ios;openid=9B30CCBDB51661025A626639108C1AA0",
       Connection: "keep-alive",
@@ -56,7 +56,7 @@ const cookiesArr = [
   },
   {
     qqreadheaderVal: JSON.stringify({
-      ywsession: "wk22o2fmjrg48snrtou2as19gurpvb5c",
+      ywsession: "dxffdalgxxh1s1mzz9jnlfuoluh6whhx",
       Cookie:
         "ywguid=111;ywkey=ywemcbEW649f;platform=ios;channel=mqqmina;mpVersion=0.29.4",
       Connection: "keep-alive",
@@ -70,7 +70,7 @@ const cookiesArr = [
       mpversion: "0.29.4",
     }),
     qqreadtimeurlVal:
-      "https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=1007&refer=-1&bid=26878703&readTime=5083&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A5083%2C%22pay_status%22%3A0%7D%7D%5D&sp=-1",
+      "httphs://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=1007&refer=-1&bid=26878703&readTime=5083&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A5083%2C%22pay_status%22%3A0%7D%7D%5D&sp=-1",
     qqreadtimeheaderVal: JSON.stringify({
       ywsession: "wk22o2fmjrg48snrtou2as19gurpvb5c",
       Cookie:
