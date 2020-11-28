@@ -42,17 +42,17 @@ const cookiesArr = [
     qqreadtimeheaderVal: JSON.stringify({
       ywsession:"dxffdalgxxh1s1mzz9jnlfuoluh6whhx",
       Cookie:
-        "wwguid=111;ywkey=ywRdaJX3UDkK;platform=ios;channel=mqqmina;mpVersion=0.28.0;qq_ver=8.4.5;os_ver=iOS 13.2.3;mpos_ver=1.18.0;platform=ios;openid=9B30CCBDB51661025A626639108C1AA0",
+        "ywguid=992425787;ywkey=ywRn4xB6Aqjr;platform=ios;channel=mqqmina;mpVersion=0.30.0;qq_ver=8.4.17;os_ver=iOS 13.5;mpos_ver=1.21.0;platform=ios;openid=1E3F2E4E334D5C64646AC94235F42D13",
       Connection: "keep-alive",
       "Content-Type": "application/json",
       Accept: "*/*",
       Host: "mqqapi.reader.qq.com",
-      "User-Agent": "QQ/8.4.5.626 CFNetwork/1120 Darwin/19.0.0",
-      Referer: "https://appservice.qq.com/1110657249/0.28.0/page-frame.html",
+      "User-Agent": "QQ/8.4.17.638 CFNetwork/1126 Darwin/19.5.0",
+      Referer: "https://appservice.qq.com/1110657249/0.30.0/page-frame.html",
       "Accept-Language": "zh-cn",
       "Accept-Encoding": "gzip, deflate, br",
-      mpversion: "0.28.0",
-    }),
+      mpversion: "0.30.0",
+    })
   },
   {
     qqreadheaderVal: JSON.stringify({
