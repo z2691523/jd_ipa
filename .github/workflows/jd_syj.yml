@@ -34,7 +34,7 @@ job:
           npm install
       - name: '运行 【十元街】'
         run: |
-          node jd_joy_steal.js
+          node jd_syj.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
