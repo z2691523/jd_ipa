@@ -26,7 +26,7 @@ const cookiesArr = [
     qqreadheaderVal: JSON.stringify({
       ywsession: "dxffdalgxxh1s1mzz9jnlfuoluh6whhx",
       Cookie:
-        "ywguid=111;ywkey=ywRdaJX3UDkK;platform=ios;channel=mqqmina;mpVersion=0.28.0",
+        "ywguid=992425787;ywkey=ywRn4xB6Aqjr;platform=ios;channel=mqqmina;mpVersion=0.30.0",
       Connection: "keep-alive",
       "Content-Type": "application/json",
       Accept: "*/*",
@@ -42,7 +42,7 @@ const cookiesArr = [
     qqreadtimeheaderVal: JSON.stringify({
       ywsession: "dxffdalgxxh1s1mzz9jnlfuoluh6whhx",
       Cookie:
-        "ywguid=111;ywkey=ywRdaJX3UDkK;platform=ios;channel=mqqmina;mpVersion=0.28.0;qq_ver=8.4.5;os_ver=iOS 13.2.3;mpos_ver=1.18.0;platform=ios;openid=9B30CCBDB51661025A626639108C1AA0",
+        "ywguid=992425787;ywkey=ywRn4xB6Aqjr;platform=ios;channel=mqqmina;mpVersion=0.30.0;qq_ver=8.4.17;os_ver=iOS 13.5;mpos_ver=1.21.0;platform=ios;openid=1E3F2E4E334D5C64646AC94235F42D13",
       Connection: "keep-alive",
       "Content-Type": "application/json",
       Accept: "*/*",
@@ -58,7 +58,7 @@ const cookiesArr = [
     qqreadheaderVal: JSON.stringify({
       ywsession: "dxffdalgxxh1s1mzz9jnlfuoluh6whhx",
       Cookie:
-        "ywguid=111;ywkey=ywemcbEW649f;platform=ios;channel=mqqmina;mpVersion=0.29.4",
+        "ywguid=992425787;ywkey=ywRn4xB6Aqjr;platform=ios;channel=mqqmina;mpVersion=0.30.0",
       Connection: "keep-alive",
       "Content-Type": "application/json",
       Accept: "*/*",
@@ -90,7 +90,7 @@ const cookiesArr = [
     qqreadheaderVal: JSON.stringify({
       ywsession: "tqmlejkp6je8ndm3eskf9cnliu0if1p0",
       Cookie:
-        "ywguid=111;ywkey=ywyv3tRPAfMQ;platform=ios;channel=mqqmina;mpVersion=0.29.4",
+        "ywguid=992425787;ywkey=ywRn4xB6Aqjr;platform=ios;channel=mqqmina;mpVersion=0.30.0",
       Connection: "keep-alive",
       "Content-Type": "application/json",
       Accept: "*/*",
