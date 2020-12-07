@@ -1,0 +1,101 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+2
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+3
+​
+4
+name: jd_kd京东快递
+5
+​
+6
+on:
+7
+  workflow_dispatch:
+8
+  schedule:
+9
+    - cron: '20 16 * * *'
+10
+  watch:
+11
+    types: started
+12
+  repository_dispatch:
+13
+    types: kd
+14
+jobs:
+15
+  build:
+16
+​
+17
+    runs-on: ubuntu-latest
+18
+    if: github.event.repository.owner.id == github.event.sender.id
+19
+    steps:
+20
+      - name: Checkout
+21
+        uses: actions/checkout@v2
+22
+        with:
+23
+          repository: z2691523/jd_ipa
+24
+      - name: Use Node.js ${{ matrix.node-version }}
+25
+        uses: actions/setup-node@v1
+26
+        with:
+27
+          node-version: ${{ matrix.node-version }}
+28
+      - name: Cache node_modules
+29
+        uses: actions/cache@v2 # 使用 GitHub 官方的缓存 Action。
+30
+        env:
+31
+          cache-name: cache-node-modules
+32
+        with:
+33
+          path: node_modules
+34
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
+35
+      - name: npm install
+36
+        run: |
+37
+          npm install
+38
+      - name: '运行 【京东快递】'
+39
+        run: |
+40
+          node jd_kd.js
+41
+        env:
+42
+          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+43
+          JD_DEBUG: ${{ secrets.JD_DEBUG }}
+44
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+45
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+46
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
+47
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+48
+          TG_USER_ID: ${{ secrets.TG_USER_ID }}
+49
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+50
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+51
+          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
