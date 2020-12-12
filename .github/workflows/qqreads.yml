@@ -2,13 +2,20 @@ name: 企鹅
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/3 * * * *'
+    - cron: '*/11 * * * *'
   watch:
     types: started
   repository_dispatch:
-    types: jjd_daily_egg
+    types: qqreads
 jobs:
   build:
+     runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    env:
+        QQREAD_BODY: ${{ secrets.QQREAD_BODY }}
+        QQREAD_TIMEURL: ${{ secrets.QQREAD_TIMEURL }}
+        QQREAD_TIMEHD: ${{ secrets.QQREAD_TIMEHD }}
+        
 
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
@@ -31,18 +38,14 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【天天提鹅】'
+      - name: '运行 【企鹅】'
         run: |
-          node jd_daily_egg.js
+          node qqreads.js
         env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
+          BARK_SOUND: ${{ secrets.BARK_SOUND }}
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-          JD_818_SHAREID_NOTIFY: ${{ secrets.JD_818_SHAREID_NOTIFY }}
