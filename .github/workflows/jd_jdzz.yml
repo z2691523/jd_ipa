@@ -1,16 +1,16 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: jd_jdzz.
+name: jd_jdzz京东赚赚
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '20 16 * * *'
+    - cron: '10 16 * * *'
   watch:
     types: started
   repository_dispatch:
-    types: kd
+    types: jd_jdzz
 jobs:
   build:
 
@@ -35,9 +35,9 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【京东快递】'
+      - name: '运行 【京东赚赚】'
         run: |
-          node jd_kd.js
+          node jd_jdzz.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
