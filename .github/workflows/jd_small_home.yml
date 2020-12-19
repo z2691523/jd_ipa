@@ -5,7 +5,7 @@ name: jd_small_home东东小窝
 on:
   workflow_dispatch:
   schedule:
-    - cron: '10 16 * * *' #此处为UTC-0时间
+    - cron: '5 16 * * *' #此处为UTC-0时间
   watch:
     types: started
   repository_dispatch:
