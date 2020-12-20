@@ -30,7 +30,7 @@ jobs:
 
         run: |
 
-          git clone https://gitee.com/z2691523/jd_ipa.git
+          git clone https://github.com/z2691523/jd_ipa.git
 
       - name: Use Node.js ${{ matrix.node-version }}
 
