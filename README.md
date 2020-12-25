@@ -88,17 +88,11 @@
 
 **脚本兼容: [QuantumultX](https://apps.apple.com/us/app/quantumult-x/id1443988620), [Surge](https://apps.apple.com/us/app/surge-4/id1442620678), [Loon](https://apps.apple.com/us/app/loon/id1373567447), 小火箭, JSBox, Node.js**
 
-**TODO**
-
-- [ ] 东东工厂相互助力
-
-- [ ] 京喜工厂相互助力
-
 ## 食用方法
 
 ### 方法一：本地安装Node.js，下载本库脚本
 
-  - 教程请见：[EvineDeng/jd-base](https://github.com/EvineDeng/jd-base)，适用于以下系统：
+  -教程请见：[EvineDeng / jd-base] （https://github.com/EvineDeng/jd-base），适用于以下系统：
 
     1. Armbian/OpenWrt/Debian/Ubuntu/CentOS/Fedora/RedHat等Linux系统
 
