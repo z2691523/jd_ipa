@@ -33,6 +33,7 @@
 | 长期   | 东东超市兑换奖品          | [jd_blueCoin.js](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_blueCoin.js)             |
 | 长期   | 口袋书店                      | [jd_bookshop.js](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_bookshop.js)             |
 | 长期   | 京东汽车赛点兑换京豆    | [jd_car_exchange.js](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_car_exchange.js)     |
+| 长期   | 签到领现金    | [jd_cash.js](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_cash.js)     |
 | 长期   | 京东汽车签到                | [jd_car.js](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_car.js)                       |
 | 长期   | 摇京豆                         | [jd_club_lottery.js](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_club_lottery.js)     |
 | 长期   | 疯狂的JOY挂机                | [jd_crazy_joy_coin.js](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_crazy_joy_coin.js) |
@@ -68,6 +69,9 @@
 | 长期   | 东东超市                      | [jd_superMarket.js](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_superMarket.js)       |
 | 长期   | 十元街                         | [jd_syj.js](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_syj.js)                       |
 | 长期   | 注销京东会员卡             | [jd_unbind.js](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_unbind.js)                 |
+| 长期   | 取关京东店铺和商品       | [jd_unsubscribe.js](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_unsubscribe.js)       |
+| 长期   | 京喜签到       | [jx_sign.js](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jx_sign.js)       |
+=======
 | 长期   | 取关京东店铺和商品       | [jd_unsubscribe.js](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_unsubscribe.js)       
 2. 短期任务仅在特定时间有效，请自行在京东APP上查阅，恕不再另行说明。
 
@@ -161,7 +165,7 @@
 
 27.  京东金融-养猪猪([jd_pigPet.js](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_pigPet.js))
 
-28.  以及其他一部分在特定时间可用的薅京豆脚本：[手机狂欢城](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_818.js) 、[星推官](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_xtg.js) 、[双十一活动领金币](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_collectProduceScore.js) 、[热8超级盲盒](https://raw.githubusercontent.com/lxk0301/jd_
+28.  以及其他一部分在特定时间可用的薅京豆脚本：[手机狂欢城](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_818.js) 、[星推官](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_xtg.js) 、[双十一活动领金币](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_collectProduceScore.js) 、[热8超级盲盒](https://raw.githubusercontent.com/lxk0301/jd
 
 搬运脚本
 
