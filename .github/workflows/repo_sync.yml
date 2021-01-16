@@ -9,7 +9,10 @@ on:
   push:
     branches: [ master ]
   repository_dispatch:
+
     types: sync-LXK9301-scripts
+=======
+    types: sync-LXK9301/jd_script
 jobs:
   repo-sync:
     env:
@@ -21,8 +24,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           persist-credentials: false
-
       - name: sync LXK9301-scripts
+=======
+      - name: sync LXK9301/jd_script
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
