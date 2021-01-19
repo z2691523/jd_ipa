@@ -1,6 +1,4 @@
-## 请勿使用github action、滥用github资源会封我仓库以及账号
-
-## GitHub:https://github.com/LXK9301/jd_scripts/tree/master
+## 请勿使用github action、滥用github资源会封我仓库以及账号，[详见](https://github.com/LXK9301/jd_scripts/issues/3)
 
 ## 特别声明: 
 
@@ -22,9 +20,18 @@
 
 > ***您使用或者复制了本仓库且本人制作的任何脚本，则视为`已接受`此声明，请仔细阅读*** 
 
+
+## Script脚本列表
+
+=======
 ## Script脚本列
+
 #### 说明
+
 1. 其中 [jd_bean_sign.js](https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_bean_sign.js) 可N个京东账号，Node.js专用，核心脚本是JD_DailyBonus.js， IOS软件用户请使用NobyDa的 [JD_DailyBonus.js](https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js)
+
+
+=======
 =======
 1. 其中 [jd_bean_sign.js](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_bean_sign.js) 可N个京东账号，Node.js专用，核心脚本是JD_DailyBonus.js， IOS软件用户请使用NobyDa的 [JD_DailyBonus.js](https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js)
 2. 以字母排序。
@@ -79,6 +86,7 @@
 
 搬运脚本
 1.  【[@yangtingxiao](https://github.com/yangtingxiao)】京东抽奖机([jd_lotteryMachine.js](https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_lotteryMachine.js))
+
 2.  【[@yangtingxiao](https://github.com/yangtingxiao)】京东排行榜([jd_rankingList.js](https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_rankingList.js))
 =======
 | 长期   | 京豆变动通知                | [jd_bean_change.js](https://raw.githubusercontent.com/lxk0301/jd_scripts/master/jd_bean_change.js)       |
@@ -229,6 +237,10 @@
 
 **脚本兼容: [QuantumultX](https://apps.apple.com/us/app/quantumult-x/id1443988620), [Surge](https://apps.apple.com/us/app/surge-4/id1442620678), [Loon](https://apps.apple.com/us/app/loon/id1373567447), 小火箭, JSBox, Node.js**
 
+**TODO**
+
+- [x] 所有活动互助码在一个脚本打印
+=======
 - [x] 所有活动互助码在一个脚本打
 =======
 - [ ] 京喜工厂添加预测N天后可兑换功能
@@ -238,42 +250,55 @@
 ## [邀请码互助入口](https://github.com/lxk0301/jd_scripts/discussion
 
 ## 邀请码互助
-  - [邀请码互助入口](https://github.com/LXK9301/jd_scripts/discussions)
-  - [获取各类活动互助码脚本 jd_get_share_code.js](https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_get_share_code.js)
-  - [邀请码使用规范](githubAction.md#互助码类环境变量)(仅限云端)
-## 食用方法
 
-### 方法一：本地安装Node.js，下载本库脚本
+- [邀请码互助入口](https://github.com/LXK9301/jd_scripts/discussions)
 
+- [获取各类活动互助码脚本 jd_get_share_code.js](https://raw.githubusercontent.com/LXK9301/jd_scripts/master/jd_get_share_code.js)
+=======
   -教程请见：[EvineDeng / jd-base] （https://github.com/EvineDeng/jd-base），适用于以下系统：
 
-    1. Armbian/OpenWrt/Debian/Ubuntu/CentOS/Fedora/RedHat等Linux系统
+- [邀请码使用规范](githubAction.md#互助码类环境变量)(仅限云端)
 
-    2. Android
+## 食用方法
 
-    3. MacOS
+### 1. Docker1
+
+- [部署方法](https://github.com/LXK9301/jd_scripts/tree/master/docker)
+
+- [环境变量集合](https://github.com/LXK9301/jd_scripts/blob/master/githubAction.md)
  
-### 方法二：Docker（NAS或VPS用户）
-
- - 可以精确控制任务运行时间，有二种办法：[docker办法一](https://github.com/LXK9301/jd_scripts/tree/master/docker)、[docker办法二（和本地安装Node.js类似）](https://github.com/EvineDeng/jd-base)
- - [环境变量集合](https://github.com/LXK9301/jd_scripts/blob/master/githubAction.md)
- 
-#### 注：以上2种运行机制都是Node.js，故您需仔细阅读下面几点
-
-  - 获取京东cookie教程可参考 [浏览器获取京东cookie教程](https://github.com/LXK9301/jd_scripts/blob/master/backUp/GetJdCookie.md) , [插件获取京东cookie教程](https://github.com/LXK9301/jd_scripts/blob/master/backUp/GetJdCookie2.md)
-
-  - 京东APP扫码获取cookie(此种方式获取的cookie有效期为90天)(执行`node getJDCookie.js`即可)
+- 获取京东cookie教程可参考：
+  
+  + [浏览器获取京东cookie教程](https://github.com/LXK9301/jd_scripts/blob/master/backUp/GetJdCookie.md)
     
-  - 方法二Docker安装Cookie请见各自的说明。
+  + [插件获取京东cookie教程](https://github.com/LXK9301/jd_scripts/blob/master/backUp/GetJdCookie2.md)
+    
+  + 京东APP扫码获取cookie(此种方式获取的cookie有效期为90天)(执行`node getJDCookie.js`即可)
 
-### 方法三：iOS系统的代理软件（QuantumultX, Surge, Loon, 小火箭）
+### 2. Docker2
 
-  - [京东cookie获取脚本 JD_extra_cookie.js](https://raw.githubusercontent.com/LXK9301/jd_scripts/master/JD_extra_cookie.js)
+教程请见：[EvineDeng/jd-base](https://github.com/EvineDeng/jd-base)
 
-### 赞赏码(开发维护不易,请赏杯茶水费)
+### 3. 系统直装
+
+教程请见：[EvineDeng/jd-base](https://github.com/EvineDeng/jd-base)，适用于以下系统：
+
+  1. Armbian/OpenWrt/Debian/Ubuntu/CentOS/Fedora/RedHat等Linux系统
+
+  2. Android
+
+  3. MacOS
+
+### 4. iOS代理软件（QuantumultX, Surge, Loon, 小火箭）
+
+- [京东cookie获取脚本 JD_extra_cookie.js](https://raw.githubusercontent.com/LXK9301/jd_scripts/master/JD_extra_cookie.js)
+
+## 赞赏码(开发维护不易,请赏杯茶水费)
+
 <div align=center><img width="250" height="250" src="./icon/thanks.jpg"/></div>
 
-### 特别感谢(排名不分先后)：
+## 特别感谢(排名不分先后)：
+
 * [@NobyDa](https://github.com/NobyDa)
 
 * [@chavyleung](https://github.com/chavyleung)
@@ -283,7 +308,6 @@
 * [@Zero-S1](https://github.com/Zero-S1)
 
 * [@uniqueque](https://github.com/uniqueque)
-
 
 * [@nzw9314](https://github.com/nzw9314)
 
