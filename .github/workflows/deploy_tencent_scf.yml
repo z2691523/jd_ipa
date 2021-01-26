@@ -24,8 +24,6 @@ jobs:
 
           npm install tencentcloud-sdk-nodejs
           npm install js-yaml
-
-=======
           sudo npm install serverless -g
 
       - name: "将Secrets里面配置的变量添加到severless.yml里面作为环境变量"
