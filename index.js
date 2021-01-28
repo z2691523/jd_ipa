@@ -15,10 +15,13 @@ exports.main_handler = async (event, context, callback) => {
       // eval(response.body)
       //})
 
-      //3.执行github远端的js文件(因github的raw类型的文件被墙,此方法云函数不推荐)
+      //3.执行github远端的js文件(因github的raw类型的文件被墙,此方法云函数不推荐
+      request('https://gitee.com/lxk0301/jd_scripts/raw/master/' + v + '.js', function (error, response, body) {
+        eval(response.body)
+      })
       //request('https://raw.githubusercontent.com/z2691523/jd_ipa/master/' + v + '.js', function (error, response, body) { 
         //eval(response.body)
-      //})
+      //}
     }
   } catch (e) {
     console.error(e)
