@@ -10,6 +10,13 @@ let FruitShareCodes = [
   '65ec76808fbe4c8b8a124112019d50c0@8abae4002b8e487c9876c73edeaf73d8@11705719f6e34c6a95913acc5d23d640@4d4ca6559515474bacfdc3038ae44c97',//账号一的好友shareCode,不同好友中间用@符号隔开
   '2238c96697ee46d6ad1338f0d4d96823@7b6a724115984e968ec962bf333c0d3b@f6a201efab0747f98e66d6021c73ae35@716377b192e14c18b50d290f529e3a00',//账号二的好友shareCode，不同好友中间用@符号隔开
 ]
+
+// 从日志获取互助码
+const logShareCodes = require('./utils/jdShareCodes');
+if (logShareCodes.FRUITSHARECODES.length > 0 && !process.env.FRUITSHARECODES) {
+  process.env.FRUITSHARECODES = logShareCodes.FRUITSHARECODES.join('&');
+}
+
 // 判断github action里面是否有东东农场互助码
 if (process.env.FRUITSHARECODES) {
   if (process.env.FRUITSHARECODES.indexOf('&') > -1) {
@@ -22,7 +29,7 @@ if (process.env.FRUITSHARECODES) {
     FruitShareCodes = process.env.FRUITSHARECODES.split();
   }
 } else if (process.env.JD_COOKIE) {
-  console.log(`由于您secret里面未提供助力码，故此处运行将会给脚本内置的码进行助力，请知晓！`)
+  console.log(`由于您环境变量(FRUITSHARECODES)里面未提供助力码，故此处运行将会给脚本内置的码进行助力，请知晓！`)
 }
 for (let i = 0; i < FruitShareCodes.length; i++) {
   const index = (i + 1 === 1) ? '' : (i + 1);

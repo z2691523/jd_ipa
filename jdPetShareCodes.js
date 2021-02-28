@@ -10,6 +10,13 @@ let PetShareCodes = [
   'MTAxODc2NTEzMjAwMDAwMDAyMDk1MjA1Mw==@MTAxODc2NTEzMzAwMDAwMDAyODczMDg3NQ==@MTAxODcxOTI2NTAwMDAwMDAzMTExODEyMw==@MTE1NDUyMjEwMDAwMDAwMzQ0MDEwNDU=@MTAxODcxOTI2NTAwMDAwMDAyMDUwMjY4NQ==',//账号一的好友shareCode,不同好友中间用@符号隔开
   'MTE1NDAxNzcwMDAwMDAwMzM4MjgyNzc=@MTE1NDAxNzgwMDAwMDAwMzM5MTU4MjE=@MTE1NDUwMTI0MDAwMDAwMDMzOTE5OTQ1@MTAxODcxOTI2NTAwMDAwMDAyODc3NTUwNw==@MTAxODc2NTEzMTAwMDAwMDAyNzM2MjI2NQ==',//账号二的好友shareCode，不同好友中间用@符号隔开
 ]
+
+// 从日志获取互助码
+const logShareCodes = require('./utils/jdShareCodes');
+if (logShareCodes.PETSHARECODES.length > 0 && !process.env.PETSHARECODES) {
+  process.env.PETSHARECODES = logShareCodes.PETSHARECODES.join('&');
+}
+
 // 判断github action里面是否有东东萌宠互助码
 if (process.env.PETSHARECODES) {
   if (process.env.PETSHARECODES.indexOf('&') > -1) {
@@ -22,7 +29,7 @@ if (process.env.PETSHARECODES) {
     PetShareCodes = process.env.PETSHARECODES.split();
   }
 } else if (process.env.JD_COOKIE) {
-  console.log(`由于您secret里面未提供助力码，故此处运行将会给脚本内置的码进行助力，请知晓！`)
+  console.log(`由于您环境变量(PETSHARECODES)里面未提供助力码，故此处运行将会给脚本内置的码进行助力，请知晓！`)
 }
 for (let i = 0; i < PetShareCodes.length; i++) {
   const index = (i + 1 === 1) ? '' : (i + 1);
