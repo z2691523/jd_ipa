@@ -1,0 +1,32 @@
+
+name: jd_sharecode互助码自动上车
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 18 * * *'
+  # watch:
+  #   types: started
+  repository_dispatch:
+    types: jd_sharecode
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+    steps:
+      - name: Checkout
+        run: |
+          git clone https://github.com/z2691523/jd_ipa.git ~/Actions
+      - name: 提交互助码
+        run: |
+          cd ~/Actions/.github
+          chmod +x jd_sharecodes.sh
+          ./jd_sharecodes.sh
+        env:
+          PETSHARECODES1: ${{ secrets.PETSHARECODES1 }}
+          FRUITSHARECODES1: ${{ secrets.FRUITSHARECODES1 }}
+          PLANT_BEAN_SHARECODES1: ${{ secrets.PLANT_BEAN_SHARECODES1 }}
+          SUPERMARKET_SHARECODES1: ${{ secrets.SUPERMARKET_SHARECODES1 }}
+          DDFACTORY_SHARECODES1: ${{ secrets.DDFACTORY_SHARECODES1 }}
+          JXFACTORY_SHARECODES1: ${{ secrets.JXFACTORY_SHARECODES1 }}
+          DREAM_FACTORY_SHARE_CODES1: ${{ secrets.DREAM_FACTORY_SHARE_CODES1 }}
