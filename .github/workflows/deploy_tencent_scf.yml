@@ -1,9 +1,10 @@
 name: 部署到腾讯云函数
 
 on:
-  workflow_dispatch:
-  schedule:
+ schedule:
     - cron: '1 */2 * * * *'
+workflow_dispatch:
+  
 jobs:
   build:
     runs-on: ubuntu-latest
