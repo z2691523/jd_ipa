@@ -50,7 +50,7 @@ jobs:
 
           source_branch: "main"
 
-          destination_branch: "zhu"
+          destination_branch: "main"
 
           github_token: ${{ secrets.PAT }}
 
