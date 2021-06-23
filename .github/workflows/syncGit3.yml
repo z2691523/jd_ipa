@@ -48,9 +48,9 @@ jobs:
 
           source_repo: "https://github.com/z2691523/jd_ipa.git"
 
-          source_branch: "main"
+          source_branch: "mi"
 
-          destination_branch: "main"
+          destination_branch: "mian"
 
           github_token: ${{ secrets.PAT }}
 
