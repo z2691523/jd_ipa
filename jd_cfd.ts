@@ -1,22 +1,16 @@
 /**
- * 京喜牧场
- * 买、喂、收蛋、锄草、挑逗
- * // TODO
- * 领奖、任务
+ * 京喜财富岛
+ * 包含雇佣导游，建议每小时1次
  */
 
 import {format} from 'date-fns';
-import {writeFileSync} from 'fs'
 import axios from 'axios';
 import USER_AGENT from './TS_USER_AGENTS';
 
 const CryptoJS = require('crypto-js')
 
-// console.log('时间戳：', format(new Date(), 'yyyyMMddHHmmssSSS'));
-
 let appId: number = 10028, fingerprint: string | number, token: string, enCryptMethodJD: any;
 let cookie: string = '', cookiesArr: Array<string> = [], res: any = '', shareCodes: Array<string>;
-let homePageInfo: any;
 
 let UserName: string, index: number, isLogin: boolean, nickName: string
 !(async () => {
@@ -32,97 +26,104 @@ let UserName: string, index: number, isLogin: boolean, nickName: string
     await TotalBean();
     console.log(`\n开始【京东账号${index}】${nickName || UserName}\n`);
 
-    homePageInfo = await api('queryservice/GetHomePageInfo', 'channel,isgift,sceneid', {isgift: 0})
-    if (JSON.stringify(homePageInfo.data) === '{}') {
-      console.log('此号活动火爆')
-      continue
-      }
-    else if (JSON.stringify(homePageInfo.data.isactivenewuser) === '1') {
-      console.log('此号未完成教学任务')
-      continue
-      }
-    let food: number = homePageInfo.data.materialinfo[0].value;
-    let petid: number = homePageInfo.data.petinfo[0].petid
-    let coins = homePageInfo.data.coins;
-
-    console.log('pet id:', petid)
-    console.log('现有草:', food);
-    console.log('金币:', coins);
-
-    let taskRetCode: number = 0;
-    while (taskRetCode === 0) {
-      taskRetCode = await getTask();
-      console.log('taskRetCode:', taskRetCode)
-      if (taskRetCode === 0) {
-        await wait(4000);
-      } else {
-        break
-      }
-    }
-
-    while (coins >= 5000 && food <= 500) {
-      res = await api('operservice/Buy', 'channel,sceneid,type', {type: '1'})
-      if (res.ret === 0) {
-        console.log('买草成功:', res.data.newnum)
-        coins -= 5000
-        food += 100
-      } else {
-        console.log(res)
-        break
-      }
-      await wait(1500)
-    }
-    await wait(2000)
-
-    while (food >= 10) {
-      res = await api('operservice/Feed', 'channel,sceneid')
-      if (res.ret === 0) {
-        food -= 10
-        console.log('剩余草:', res.data.newnum)
-      } else if (res.ret === 2020) {
-        if (res.data.maintaskId === 'pause') {
-          console.log('收🥚')
-          res = await api('operservice/GetSelfResult', 'channel,itemid,sceneid,type', {petid: petid, type: '11'})
-          if (res.ret === 0) {
-            console.log('收🥚成功:', res.data.newnum)
-          }
+    // 任务1
+    let tasks: any
+    /*
+     tasks= await api('story/GetActTask', '_cfd_t,bizCode,dwEnv,ptag,source,strZone')
+    for (let t of tasks.Data.TaskList) {
+      if (t.dwCompleteNum === t.dwTargetNum && t.dwAwardStatus === 2) {
+        res = await api('Award', '_cfd_t,bizCode,dwEnv,ptag,source,strZone,taskId', {taskId: t.ddwTaskId})
+        if (res.ret === 0) {
+          console.log(`${t.strTaskName}领奖成功:`, res.data.prizeInfo)
         }
-      } else {
-        console.log(res)
-        break
+        await wait(1000)
       }
-      await wait(4000)
     }
-    await wait(2000)
+     */
 
-    while (1) {
-      res = await api('operservice/Action', 'channel,sceneid,type', {type: '2'})
-      if (res.data.addcoins === 0) break
-      console.log('锄草:', res.data.addcoins)
-      await wait(1500)
+
+    // res = await api('story/SpecialUserOper',
+    //   '_cfd_t,bizCode,ddwTriggerDay,dwEnv,dwType,ptag,source,strStoryId,strZone,triggerType',
+    //   {strStoryId: 'stroy_1626065998453014_1', dwType: '2', triggerType: 0, ddwTriggerDay: 1626019200})
+    // console.log('船到:', res)
+    // await wait(31000)
+    // res = await api('story/SpecialUserOper',
+    //   '_cfd_t,bizCode,ddwTriggerDay,dwEnv,dwType,ptag,source,strStoryId,strZone,triggerType',
+    //   {strStoryId: 'stroy_1626065998453014_1', dwType: '3', triggerType: 0, ddwTriggerDay: 1626019200})
+    // console.log('下船:', res)
+
+    // 导游
+    res = await api('user/EmployTourGuideInfo', '_cfd_t,bizCode,dwEnv,ptag,source,strZone')
+    for (let e of res.TourGuideList) {
+      console.log(e.dwIsUnLock, e.strGuideName)
+      if (e.strBuildIndex !== 'food' && e.ddwRemainTm === 0) {
+        let employ: any = await api('user/EmployTourGuide', '_cfd_t,bizCode,ddwConsumeCoin,dwEnv,dwIsFree,ptag,source,strBuildIndex,strZone',
+          {ddwConsumeCoin: e.ddwCostCoin, dwIsFree: 0, strBuildIndex: e.strBuildIndex})
+        console.log(employ)
+        await wait(3000)
+      }
     }
-    await wait(2000)
 
-    while (1) {
-      res = await api('operservice/Action', 'channel,sceneid,type', {type: '1', petid: petid})
-      if (res.data.addcoins === 0) break
-      console.log('挑逗:', res.data.addcoins)
-      await wait(1500)
+    tasks = await mainTask('GetUserTaskStatusList', '_cfd_t,bizCode,dwEnv,ptag,source,strZone,taskId', {taskId: 0});
+    for (let t of tasks.data.userTaskStatusList) {
+      if (t.dateType === 2) {
+        // 每日任务
+        if (t.awardStatus === 2 && t.completedTimes === t.targetTimes) {
+          console.log(1, t.taskName)
+          res = await mainTask('Award', '_cfd_t,bizCode,dwEnv,ptag,source,strZone,taskId', {taskId: t.taskId})
+          console.log(res)
+          if (res.ret === 0) {
+            console.log(`${t.taskName}领奖成功:`, res.data.prizeInfo)
+          }
+          await wait(2000)
+        } else if (t.awardStatus === 2 && t.completedTimes < t.targetTimes && (t.orderId === 2 || t.orderId === 3)) {
+          // console.log('做任务:', t.taskId, t.taskName, t.completedTimes, t.targetTimes)
+          res = await mainTask('DoTask', '_cfd_t,bizCode,configExtra,dwEnv,ptag,source,strZone,taskId', {taskId: t.taskId, configExtra: ''})
+          console.log('做任务:', res)
+          await wait(5000)
+        }
+      }
+    }
+
+    for (let b of ['food', 'fun', 'shop', 'sea']) {
+      res = await api('user/GetBuildInfo', '_cfd_t,bizCode,dwEnv,dwType,ptag,source,strBuildIndex,strZone', {strBuildIndex: b})
+      console.log(`${b}升级需要:`, res.ddwNextLvlCostCoin)
+      await wait(1000)
+      if (res.dwCanLvlUp === 1) {
+        res = await api('user/BuildLvlUp', '_cfd_t,bizCode,ddwCostCoin,dwEnv,ptag,source,strBuildIndex,strZone', {ddwCostCoin: res.ddwNextLvlCostCoin, strBuildIndex: b})
+        if (res.iRet === 0) {
+          console.log(`升级成功`)
+          await wait(2000)
+        }
+      }
+      res = await api('user/CollectCoin', '_cfd_t,bizCode,dwEnv,dwType,ptag,source,strBuildIndex,strZone', {strBuildIndex: b, dwType: '1'})
+      console.log(`${b}收金币:`, res.ddwCoin)
+      await wait(1000)
     }
   }
 })()
 
 interface Params {
-  isgift?: number,
-  petid?: number,
-  type?: string,
-  taskId?: number
-  configExtra?: string
+  strBuildIndex?: string,
+  ddwCostCoin?: number,
+  taskId?: number,
+  dwType?: string,
+  configExtra?: string,
+  strStoryId?: string,
+  triggerType?: number,
+  ddwTriggerDay?: number,
+  ddwConsumeCoin?: number,
+  dwIsFree?: number,
+
 }
 
 function api(fn: string, stk: string, params: Params = {}) {
   return new Promise(async resolve => {
-    let url = `https://m.jingxi.com/jxmc/${fn}?channel=7&sceneid=1001&_stk=${encodeURIComponent(stk)}&_ste=1&sceneval=2`
+    let url = `https://m.jingxi.com/jxbfd/${fn}?strZone=jxbfd&bizCode=jxbfd&source=jxbfd&dwEnv=7&_cfd_t=${Date.now()}&ptag=&_ste=1&_=${Date.now()}&sceneval=2&_stk=${encodeURIComponent(stk)}`
+    if (['GetUserTaskStatusList', 'Award', 'DoTask'].includes(fn)) {
+      console.log('api2')
+      url = `https://m.jingxi.com/newtasksys/newtasksys_front/${fn}?strZone=jxbfd&bizCode=jxbfddch&source=jxbfd&dwEnv=7&_cfd_t=${Date.now()}&ptag=&_stk=${encodeURIComponent(stk)}&_ste=1&_=${Date.now()}&sceneval=2`
+    }
     if (Object.keys(params).length !== 0) {
       let key: (keyof Params)
       for (key in params) {
@@ -133,53 +134,19 @@ function api(fn: string, stk: string, params: Params = {}) {
     url += '&h5st=' + decrypt(stk, url)
     let {data} = await axios.get(url, {
       headers: {
-        'Cookie': cookie,
         'Host': 'm.jingxi.com',
-        'User-Agent': 'jdpingou;iPhone;4.11.0;12.4.1;52cf225f0c463b69e1e36b11783074f9a7d9cbf0;network/wifi;model/iPhone11,6;appBuild/100591;ADID/C51FD279-5C69-4F94-B1C5-890BC8EB501F;supportApplePay/1;hasUPPay/0;pushNoticeIsOpen/0;hasOCPay/0;supportBestPay/0;session/503;pap/JA2019_3111789;brand/apple;supportJDSHWK/1;Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148',
         'Referer': 'https://st.jingxi.com/',
+        'User-Agent': USER_AGENT,
+        'Cookie': cookie
       }
     })
     resolve(data)
   })
 }
 
-function getTask() {
-  return new Promise<number>(async resolve => {
-    let tasks: any = await taskAPI('GetUserTaskStatusList', 'bizCode,dateType,source')
-    let doTaskRes: any = {ret: 1}, code: number = 1
-    for (let t of tasks.data.userTaskStatusList) {
-      if ((t.dateType === 1 || t.dateType === 2) && t.completedTimes == t.targetTimes && t.awardStatus === 2) {
-        // 成就任务
-        t.dateType === 1
-          ?
-          console.log('成就任务可领取:', t.taskName, t.completedTimes, t.targetTimes)
-          :
-          console.log('每日任务可领取:', t.taskName, t.completedTimes, t.targetTimes)
-
-        doTaskRes = await taskAPI('Award', 'bizCode,source,taskId', {taskId: t.taskId})
-        await wait(4000)
-        if (doTaskRes.ret === 0) {
-          let awardCoin = doTaskRes['data']['prizeInfo'].match(/:(.*)}/)![1] * 1
-          console.log('领奖成功:', awardCoin)
-        }
-      }
-      if (t.dateType === 2 && t.completedTimes < t.targetTimes && t.awardStatus === 2 && t.taskType === 2) {
-        console.log('可做每日任务:', t.taskName, t.taskId)
-        doTaskRes = await taskAPI('DoTask', 'bizCode,configExtra,source,taskId', {taskId: t.taskId, configExtra: ''})
-        console.log(doTaskRes)
-        if (doTaskRes.ret === 0) {
-          console.log('任务完成')
-          await wait(5000)
-        }
-      }
-    }
-    resolve(doTaskRes.ret)
-  })
-}
-
-function taskAPI(fn: string, stk: string, params: Params = {}) {
+function mainTask(fn: string, stk: string, params: Params = {}) {
   return new Promise(async resolve => {
-    let url = `https://m.jingxi.com/newtasksys/newtasksys_front/${fn}?_=${Date.now()}&source=jxmc&bizCode=jxmc&_ste=1&sceneval=2&_stk=${encodeURIComponent(stk)}&g_login_type=1&g_ty=ajax`
+    let url = `https://m.jingxi.com/newtasksys/newtasksys_front/${fn}?strZone=jxbfd&bizCode=jxbfd&source=jxbfd&dwEnv=7&_cfd_t=${Date.now()}&ptag=&_stk=${encodeURIComponent(stk)}&_ste=1&_=${Date.now()}&sceneval=2`
     if (Object.keys(params).length !== 0) {
       let key: (keyof Params)
       for (key in params) {
@@ -190,13 +157,10 @@ function taskAPI(fn: string, stk: string, params: Params = {}) {
     url += '&h5st=' + decrypt(stk, url)
     let {data} = await axios.get(url, {
       headers: {
-        'Origin': 'https://st.jingxi.com',
-        'Accept-Language': 'zh-cn',
-        'Connection': 'keep-alive',
+        'X-Requested-With': 'com.jd.pingou',
+        'Referer': 'https://st.jingxi.com/',
         'Host': 'm.jingxi.com',
-        'Referer': 'https://st.jingxi.com/pingou/jxmc/index.html?nativeConfig=%7B%22immersion%22%3A1%2C%22toColor%22%3A%22%23e62e0f%22%7D&__mcwvt=sjcp&PTAG=139279.13.31&jxsid=16257474246337594063',
-        'Accept': 'application/json',
-        'User-Agent': 'jdpingou;iPhone;4.11.0;12.4.1;52cf225f0c463b69e1e36b11783074f9a7d9cbf0;network/wifi;model/iPhone11,6;appBuild/100591;ADID/C51FD279-5C69-4F94-B1C5-890BC8EB501F;supportApplePay/1;hasUPPay/0;pushNoticeIsOpen/0;hasOCPay/0;supportBestPay/0;session/503;pap/JA2019_3111789;brand/apple;supportJDSHWK/1;Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148',
+        'User-Agent': USER_AGENT,
         'Cookie': cookie
       }
     })
